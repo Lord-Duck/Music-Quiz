@@ -14,11 +14,11 @@ class Question extends React.Component {
       question8:  "",
       question9:  "",
       question10:  "",
+      finale: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.Ya = "Bruh"
   }
 
   
@@ -28,19 +28,20 @@ class Question extends React.Component {
   }
 
   handleSubmit(event) {
-    alert( this.Ya + ": " + this.state.question1);
+    this.setState({finale: this.state.question1}) 
     event.preventDefault();
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>{this.Ya}</h2>
+        <h2>do ya like jazz?</h2>
         <input type="text" name="question1"value={this.state.question1} onChange={this.handleChange} />
-        <h2>sex2</h2>
+        <h2>did john lennin have it coming?</h2>
         <input type="text" name="question2" value={this.state.question2} onChange={this.handleChange} />
         <br></br>
         <input type="submit" value="Submit" />
+        <h3>{this.state.finale}</h3>
       </form>
     );
   }
