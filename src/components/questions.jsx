@@ -21,7 +21,23 @@ class Questions extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     
-    this.finale = 0
+    this.yes = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Green_tick.svg/2048px-Green_tick.svg.png"
+    this.no = "https://e7.pngegg.com/pngimages/822/987/png-clipart-red-x-illustration-american-red-cross-international-red-cross-and-red-crescent-movement-christian-cross-wrong-angle-logo-thumbnail.png"
+
+    this.finale = 0;
+    this.image={
+      img1 : "",
+      img2 : "",
+      img3 : "",
+      img4 : "",
+      img5 : "",
+      img6 : "",
+      img7 : "",
+      img8 : "",
+      img9 : "",
+      img10: ""
+    }
+
   }
 
 
@@ -31,9 +47,13 @@ class Questions extends React.Component {
   } 
   //this is very messey sorry
   handleSubmit(event) { 
+    Object.keys(this.image).forEach(key => {
+      obj[key] = "";
+    });
     this.finale = 0
     if(this.state.question1=="yes") {
       this.finale += 1
+      this.image.img1 = this.yes
     }
     
     if(this.state.question2=="neighbours"||this.state.question2=="kanye east and jayz") {
@@ -60,7 +80,7 @@ class Questions extends React.Component {
     if(this.state.question9=="the weekend"||this.state.question9=="vega bay") {
       this.finale += 1
     }
-    if(this.state.question10=="average height"||this.state.question9=="vega bay") {
+    if(this.state.question10=="average height"||this.state.question9=="vega bay"||this.state.question9=="weezer") {
       this.finale += 1
     }
    this.setState(function(state, props) {
@@ -77,7 +97,7 @@ class Questions extends React.Component {
         <h1>Music Quiz</h1>
         <form onSubmit={this.handleSubmit}>
          <h2>Did john lennon have it coming</h2>
-         <h4>yes or no</h4> <input type="text" name="question1"value={this.state.question1} onChange={this.handleChange} /> 
+         <h4>yes or no</h4> <input type="text" name="question1"value={this.state.question1} onChange={this.handleChange} /> <image src={this.img1}></image>
          <h2>Who was in paris?</h2>
          <input type="text" name="question2"value={this.state.question2} onChange={this.handleChange} />
          <h2>Do you like jazz</h2>
@@ -101,7 +121,7 @@ class Questions extends React.Component {
          <br></br>
          <h1>{this.state.done}</h1>
         </form>
-        <h2>Rember no capital letters</h2>
+        <h2>Rember no capital letters and use the prompts</h2>
       </div>
     );
   }
